@@ -6,15 +6,7 @@ def right(x):
     return 2 * x + 2
 
 
-def build_heap(array):
-    len_arr = len(array)
-    # For loop with backward pointer that travels from the end to mid of list, and heapifies
-    for i in range(len_arr // 2):
-        x = ((len_arr // 2) - 1) - i
-        descend_heapify(array, x)
-
-
-def descend_heapify(array, parent, heap_size=None):
+def heapify(array, parent, heap_size=None):
     l = left(parent)
     r = right(parent)
     # Only needed for sorting the heap
@@ -35,7 +27,15 @@ def descend_heapify(array, parent, heap_size=None):
     if smallest != parent:
         array[parent], array[smallest] = array[smallest], array[parent]
         # heapify to see if the smallest child should be pushed up the heap
-        descend_heapify(array, smallest, heap_size)
+        heapify(array, smallest, heap_size)
+
+
+def build_heap(array):
+    len_arr = len(array)
+    # For loop with backward pointer that travels from the end to mid of list, and heapifies
+    for i in range(len_arr // 2):
+        x = ((len_arr // 2) - 1) - i
+        heapify(array, x)
 
 
 def heap_sort(array):
@@ -47,10 +47,10 @@ def heap_sort(array):
         # Move the smallest element to the back at index heap_size
         array[0], array[heap_size] = array[heap_size], array[0]
         # Heapifies the array and stops before heap_size index is reached
-        descend_heapify(array, 0, heap_size)
+        heapify(array, 0, heap_size)
 
     return array
 
 
-arr = [1, 2, 3, 4, 5]
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(heap_sort(arr))
