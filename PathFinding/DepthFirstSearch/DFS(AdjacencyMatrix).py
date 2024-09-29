@@ -77,7 +77,8 @@ class DFS:
         return self.graph
 
 
-A = DFS(['U', 'V', 'W', 'X', 'Y', 'Z'])
+nodes = ['U', 'V', 'W', 'X', 'Y', 'Z']
+A = DFS(nodes)
 
 A.add_edges(('U', 'V'))
 A.add_edges(('U', 'X'))
@@ -86,11 +87,12 @@ A.add_edges(('W', 'Y'))
 A.add_edges(('W', 'Z'))
 A.add_edges(('X', 'V'))
 A.add_edges(('Y', 'X'))
-A.add_edges(('Z', 'Z'))
 
 A.depth_first_search()
 
 print("\n", A.display(), "\n")
+# Listed Nodes
+print("Nodes", nodes, "\n")
 # Black is explored, White is not explored
 print("Visited", A.color, "\n")
 # Time when first discovered

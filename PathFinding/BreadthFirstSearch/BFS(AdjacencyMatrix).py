@@ -46,19 +46,17 @@ class BFS:
                 break
         return col, row
 
-
-
     # (u: parent, v: child)
     def breadth_first_search(self, root: str):
         self.queue.append(root)
-        while len(self.queue) != 0: # As long as queue not empty
+        while len(self.queue) != 0:
             u = self.queue.pop(0)
             u = self.to_index(u)
 
             neighbors = self.graph[u]
             for v in range(len(neighbors)):
-                if neighbors[v] != 0: # If 0, neighbor does not exist
-                    if self.color[v] == 'white': # If unexplored, will be exploring
+                if neighbors[v] != 0: # Neighbor does not exist
+                    if self.color[v] == 'white': # Unexplored
                         self.color[v] = 'gray'
                         self.parent[v] = self.to_vertex(u)
 
@@ -85,7 +83,6 @@ A.add_edges(('W', 'Y'))
 A.add_edges(('W', 'Z'))
 A.add_edges(('X', 'V'))
 A.add_edges(('Y', 'X'))
-A.add_edges(('Z', 'Z'))
 
 A.breadth_first_search('U')
 
