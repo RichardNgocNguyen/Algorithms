@@ -51,10 +51,6 @@ class MST:
                 self.dequeue.append(inexpensive_node)
                 self.total += minimum
 
-    # Return 2D Matrix
-    def display(self):
-        return self.graph
-
 
 G = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
